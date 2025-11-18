@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divisi OSIS</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color: #013cff;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      gap: 50px;
+    }
+
+    .main-photo img {
+      width: 385px;            
+      height: auto;            
+      cursor: pointer;
+      filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9)); 
+      transition: 0.4s ease;
+      animation: float 3s ease-in-out infinite; /* animasi naik-turun */
+    }
+
+    .main-photo img:hover {
+      filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)); 
+      transform: scale(1.08); 
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 450px;
+    }
+
+    .title {
+      font-size: 48px;                  
+      font-weight: 900;                  
+      background: linear-gradient(90deg, #FFD700, #FF8C00); 
+      -webkit-background-clip: text;    
+      -webkit-text-fill-color: transparent; 
+      text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.7), 
+        0 0 20px rgba(255, 140, 0, 0.5); 
+      margin-bottom: 20px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 130px);
+      gap: 20px;
+      justify-content: center;
+      max-height: 500px; 
+      overflow-y: auto;  
+      padding-right: 5px; 
+    }
+
+    .grid-item {
+      width: 130px;
+      height: 130px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+    }
+
+    .grid-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain; 
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+      transition: 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .grid-item img:hover {
+      filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1));
+      transform: scale(1.05);
+    }
+
+    .grid::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .grid::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 3px;
+    }
+
+    .grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+ <div class="main-photo">
+  <a href="osis.html">
+    <img src="OSIS IP3A GEDE.png" alt="Foto Besar">
+  </a>
+</div>
+
+
+  <div class="right-side">
+    <div class="grid">
+  <div class="grid-item"><a href="d1.html"><img src="Divisi Keamanan.png" alt="Divisi 1"></a></div>
+  <div class="grid-item"><a href="d2.html"><img src="Divisi Pengajaran.PNG" alt="Divisi 2"></a></div>
+  <div class="grid-item"><a href="d3.html"><img src="Divisi Kebersihan.PNG" alt="Divisi 3"></a></div>
+  <div class="grid-item"><a href="d4.html"><img src="Divisi Bahasa.PNG" alt="Divisi 4"></a></div>
+  <div class="grid-item"><a href="d5.html"><img src="Divisi Kesehatan.png" alt="Divisi 5"></a></div>
+  <div class="grid-item"><a href="d6.html"><img src="Divisi Informasi.png" alt="Divisi 6"></a></div>
+  <div class="grid-item"><a href="d7.html"><img src="Divisi Belanegara.PNG" alt="Divisi 7"></a></div>
+  <div class="grid-item"><a href="d8.html"><img src="Divisi Olahraga.PNG" alt="Divisi 8"></a></div>
+  <div class="grid-item"><a href="d9.html"><img src="Divisi Kesenian.png" alt="Divisi 9"></a></div>
+  <div class="grid-item"><a href="d10.html"><img src="Divis Logistik baru.png" alt="Divisi 10"></a></div>
+  <div class="grid-item"><a href="d11.html"><img src="Divisi_Perpustakaan-removebg-preview.png" alt="Divisi 11"></a></div>
+  <div class="grid-item"><a href="d12.html"><img src="Divisi Penerimaan Tamu .PNG" alt="Divisi 12"></a></div>
+  <div class="grid-item"><a href="d13.html"><img src="Divisi Lingkungan Hidup.png" alt="Divisi 13"></a></div>
+  <div class="grid-item"><a href="d14.html"><img src="Divisi Dapur.png" alt="Divisi 14"></a></div>
+  <div class="grid-item"><a href="d15.html"><img src="Divisi Ta`mirul Mesjid.png" alt="Divisi 15"></a></div>
+  <div class="grid-item"><a href="d16.html"><img src="Divisi Koperasi.gif" alt="Divisi 16"></a></div>
+  <div class="grid-item"><a href="d17.html"><img src="WhatsApp_Image_2021-09-19_at_20.36.13__1_-removebg-preview (1).png" alt="Divisi 17"></a></div>
+  <div class="grid-item"><a href="d18.html"><img src="Divisi Daurotul Miyah.png" alt="Divisi 18"></a></div>
+  <div class="grid-item"><a href="d18.html"><img src="Divisi MPK.png" alt="Divisi 18"></a></div>
+</div>
+  </div>
+</body>
+</html>

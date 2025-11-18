@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divisi OSIS</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color:#013cff;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      gap: 50px;
+      position: relative;
+    }
+    a.back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      text-shadow: 0 0 6px #fff;
+      transition: all 0.3s ease;
+    }
+    a.back:hover {
+      color: #FFD700;
+      border-color: #FFD700;
+      box-shadow: 0 0 15px #FFD700;
+      text-shadow: 0 0 12px #FFD700;
+    }
+    .main-photo img {
+      width: 385px;
+      height: auto;
+      cursor: pointer;
+      filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+      transition: 0.4s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .main-photo img:hover {
+      filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1));
+      transform: scale(1.08);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 130px);
+      gap: 25px;
+      justify-content: center;
+      max-height: 500px;
+      overflow-y: auto;
+      padding-right: 5px;
+      scrollbar-width: none;
+    }
+    .grid::-webkit-scrollbar { display: none; }
+    .grid-item {
+      width: 130px;
+      text-align: center;
+    }
+    .grid-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
+      transition: 0.3s ease;
+      border-radius: 10px;
+    }
+    .grid-item img:hover {
+      filter: drop-shadow(0 0 25px rgba(255,255,255,1));
+      transform: scale(1.05);
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .popup-content {
+      background: #001f9a;
+      display: flex;
+      padding: 25px 35px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.4);
+      gap: 25px;
+      max-width: 600px;
+      color: white;
+      position: relative;
+      animation: zoomIn 0.3s ease;
+    }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .popup-content img {
+      width: 200px;
+      border-radius: 12px;
+      filter: drop-shadow(0 0 12px #fff);
+    }
+    .popup-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.7;
+      font-size: 16px;
+      gap: 8px;
+    }
+    .edit-btn, .save-btn {
+      margin-top: 12px;
+      padding: 6px 14px;
+      background: #FFD700;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      align-self: flex-start;
+    }
+    .edit-btn:hover, .save-btn:hover {
+      background: #ffa500;
+      box-shadow: 0 0 12px #FFD700;
+    }
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+    }
+    .close-btn:hover { color: #FFD700; }
+  </style>
+</head>
+<body>
+
+<a class="back" href="index2.html">← Back</a>
+
+<div class="main-photo">
+  <img src="Divisi Kesenian.png" alt="Divisi Kesenian">
+</div>
+
+<div class="right-side">
+  <div class="grid">
+
+    <!-- contoh -->
+    <div class="grid-item"><img src="IMG20251011202347.jpg" alt="Fauzan" onclick="openPopup(this)"><div class="name">Fauzan</div></div>
+
+  </div>
+</div>
+
+<div class="popup" id="popup">
+  <span class="close-btn" onclick="closePopup()">×</span>
+  <div class="popup-content">
+    <img id="popupImg" src="" alt="">
+    <div class="popup-text">
+
+      <div><strong style="width:90px;">Nama :</strong> <span id="nama" contenteditable="false">-</span></div>
+      <div><strong style="width:90px;">Kelas :</strong> <span id="kelas" contenteditable="false">XI PPLG</span></div>
+      <div><strong style="width:90px;">Konsulat :</strong> <span id="konsulat" contenteditable="false">Cianjur Timur</span></div>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <strong style="width:90px;">Divisi :</strong>
+        <span id="divisiDisplay">Belum Dipilih</span>
+
+        <select id="divisiSelect" style="display:none;">
+
+          <option value="d1.html">Keamanan</option>
+          <option value="d2.html">Pengajaran</option>
+          <option value="d3.html">Kebersihan</option>
+          <option value="d4.html">Bahasa</option>
+          <option value="d5.html">Kesehatan</option>
+          <option value="d6.html">Informasi</option>
+          <option value="d7.html">Belanegara</option>
+          <option value="d8.html">Olahraga</option>
+          <option value="d9.html">Kesenian</option>
+          <option value="d10.html">Logistik</option>
+          <option value="d11.html">Perpustakaan</option>
+          <option value="d12.html">Pentam</option>
+          <option value="d13.html">Lingkup</option>
+          <option value="d14.html">Dapur</option>
+          <option value="d15.html">DKM</option>
+          <option value="d16.html">Koperasi</option>
+          <option value="d17.html">Altiemedia</option>
+          <option value="d18.html">Doulutumiah</option>
+          <option value="d19.html">MPK</option>
+
+        </select>
+      </div>
+
+      <button class="edit-btn" onclick="editInfo()">Edit</button>
+      <button class="save-btn" onclick="saveInfo()" style="display:none;">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openPopup(img) {
+  document.getElementById("popupImg").src = img.src;
+  document.getElementById("nama").textContent = img.alt;
+  document.getElementById("popup").style.display = "flex";
+}
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+function editInfo() {
+  document.getElementById("nama").contentEditable = true;
+  document.getElementById("kelas").contentEditable = true;
+  document.getElementById("konsulat").contentEditable = true;
+
+  document.getElementById("divisiDisplay").style.display = "none";
+  document.getElementById("divisiSelect").style.display = "inline-block";
+
+  document.querySelector(".edit-btn").style.display = "none";
+  document.querySelector(".save-btn").style.display = "inline-block";
+}
+function saveInfo() {
+  document.getElementById("nama").contentEditable = false;
+  document.getElementById("kelas").contentEditable = false;
+  document.getElementById("konsulat").contentEditable = false;
+
+  const select = document.getElementById("divisiSelect");
+  const display = document.getElementById("divisiDisplay");
+
+  display.textContent = select.options[select.selectedIndex].text;
+
+  display.style.display = "inline-block";
+  select.style.display = "none";
+
+  document.querySelector(".save-btn").style.display = "none";
+  document.querySelector(".edit-btn").style.display = "inline-block";
+
+  window.location.href = select.value;
+}
+window.onclick = function(e) {
+  const popup = document.getElementById("popup");
+  if (e.target === popup) popup.style.display = "none";
+};
+</script>
+
+</body>
+</html>
